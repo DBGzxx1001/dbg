@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -25,7 +26,10 @@ public class MybatisPlusTest {
     @Test
     public void selectAllTest(){
         List<User> list = userMapper.selectList(null);
-        list.forEach(System.out::println);
+//        list.forEach(System.out::println);
+        List<User> list1 = new ArrayList<>();
+        list.forEach(cc -> list1.add(cc));
+        list1.forEach(user -> System.out.println(user));
     }
 
 }
