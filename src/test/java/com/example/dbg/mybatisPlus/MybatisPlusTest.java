@@ -4,10 +4,13 @@ import com.example.dbg.mapper.UserMapper;
 import com.example.dbg.model.po.User;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,16 +23,23 @@ import java.util.List;
 @SpringBootTest
 public class MybatisPlusTest {
 
+    Logger logger = LoggerFactory.getLogger(MybatisPlusTest.class);
+
     @Autowired
     private UserMapper userMapper;
 
     @Test
     public void selectAllTest(){
+
         List<User> list = userMapper.selectList(null);
 //        list.forEach(System.out::println);
         List<User> list1 = new ArrayList<>();
         list.forEach(cc -> list1.add(cc));
-        list1.forEach(user -> System.out.println(user));
+        list1.forEach(user -> System.out.println(user.getAge()));
+        list1.forEach(user -> logger.info(""+user.getId()));
+        list1.forEach(user -> {
+
+        });
     }
 
 }
